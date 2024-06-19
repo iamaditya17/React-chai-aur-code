@@ -1,0 +1,34 @@
+-----------------Browser Behind the scene----------------
+
+Now a days browsers are more like an Operating System.
+
+Browser consists of :
+------------------------
+
+1. Data & memory : store data, retrieve data etc...
+2. UI : User interface through which user communicate with server
+3. Browser Engine:
+   i) Rendering Engine: render HTML, CSS and lit bit of JS
+   ii) JS Engine
+4. Network : load HTML file, load CSS file etc..
+5. Timers : setTimeOut(),setInterval()
+
+----------------How HTML Works------------------
+
+HTML is a Document
+
+Step-1: Browser will load the HTML files.
+Step-2: Then it will convert the files into raw bytes(0,1).
+Step-3: Then it will extract the character from the bytes and do the tokenization means it will detect the h1 tags, p tags etc..
+Step-4: Then it will create the object of those tags
+example: {
+    tag: h1,
+    title: name,
+    data: Hi Aditya
+}
+Step-5: Then it will construct the model means which tags comes under which One (parent,siblings etc...)
+
+Why HTML is called a DOM (Document Object Model)?
+--------------------------------------------------
+HTML is a document and then it will create the object of it's tags (step-4) and then it will create the model of the document (step-5)
+
