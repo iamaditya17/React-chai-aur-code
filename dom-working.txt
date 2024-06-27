@@ -18,7 +18,7 @@ Browser consists of :
 HTML is a Document
 
 Step-1: Browser will load the HTML files.
-Step-2: Then it will convert the files into raw bytes(0,1).
+Step-2: Then it will convert the raw data into raw bytes(0,1).
 Step-3: Then it will extract the character from the bytes and do the tokenization means it will detect the h1 tags, p tags etc..
 Step-4: Then it will create the object of those tags
 example: {
@@ -26,9 +26,39 @@ example: {
     title: name,
     data: Hi Aditya
 }
-Step-5: Then it will construct the model means which tags comes under which One (parent,siblings etc...)
+Step-5: Then it will construct the model or Relations, means which tags comes under which One (parent,siblings etc...)
+Step-6: DOM generation, then the realtions are converted into NodeList (dom tree), multiple NodeLists are there.
 
 Why HTML is called a DOM (Document Object Model)?
 --------------------------------------------------
-HTML is a document and then it will create the object of it's tags (step-4) and then it will create the model of the document (step-5)
+HTML is a document and then it will create the object of it's tags (step-4) and then it will create the model or relation of tags of the document (step-5)
 
+*Similarly the CSSOM (CSS Object Model) works.
+
+How web page has been rendered in our browser?
+-----------------------------------------------
+
+When the bowser loaded the HTML file then it will start working on the DOM then when it see a reference link to CSS file in HTML file, then it will work simultaneously on CSSOM.
+
+Both DOM & CSSOM are independent
+
+Then Render Tree is generated
+
+Render tree will first gathers all the information like DOM and CSSOM and give it to the Browser Engine
+
+Then the Browser Engine will do some Mathematics calculations and then start the painting on screen.
+
+Painting: When the webpage has been rendering on the browser it's called painting.
+
+How JS works on browser?
+-------------------------
+When broswer finds the "script" tag in the html file then at that time itself it will stop generating the DOM,CSSOM and any otherworks it is doing.
+
+First it will load the JS on to the browser and then it will resume it's works.
+
+JS vs DOM --> DOM will be haulted until JS is loaded to the browser.
+JS vs CSSOM --> JS will be haulted untill CSSOM is ready.
+
+NOTE
+----
+We can execute the JS at last by using async.

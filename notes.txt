@@ -1,0 +1,124 @@
+For web application React deals with react-dom
+For mobile app React deals with react-native
+
+"create-react-app" is a utility means a software  (takes a lot of time)
+
+web-vitals  -> This dependency or pkg is used for performance tracking of application
+
+"scripts" has 4 things (package.json)
+-------------------------------------
+"start" : start on dev environment
+"build" : production
+"test" : testing purpose
+"eject" : will eject react from this application, means react will be of no-use in this application
+
+<noscript></noscript>
+-----------------------
+This tag is used to give a warning that the browser is not supporting "JS"
+
+Note:
+-----
+Inside "src" folder the main entry file is "index.js"
+
+When we want return multiple component in "App.js" then always fragment those all components under <></> or <React.Fragment></React.Fragment>
+
+Why hooks are required?
+-----------------------
+Whenever we want to update the UI component, we can update it through React hooks.
+Whenever we want to update the state we use useState() hook.
+When setState() is called react will do the re-rendering
+
+What is Fibre?
+--------------
+Fibre is basically an algorithm which is used in the backend of react to update the virtual DOM.
+React.createRoot() --> this function creates the virtual DOM tree.
+It assigns priority to different UI updates.
+
+What is Reconciliation?
+-----------------------
+Reconciliation is also an algorithm which is recursive and it differentiate the virtual DOM tree and inbuilt browser DOM tree and then it determines which part to update and which part to not update.
+This is the main algorithm which is present behind "virtual DOM".
+
+NOTE:
+-----
+Babel is the bundler which bind our code.
+Whenever we do the reload then it will reset the state means it will take the default value of state
+
+useEffect() hook
+-----------------
+This hook works when the component is mounted or loaded on the browser.
+
+useEffect(() => {
+    passwordGenerator()
+}, [length, numberCheckbox, charCheckbox])
+
+Here it means whenever we do some changes w.r.t the length or numberCheckbox or charCheckbox then the passwordGenerator() function will re render on the page.
+
+NOTE:
+-----
+Whenever the state will change react will re render the entire components
+
+Case 1: This is the case which is used mostly whenever we want to show a thing on every Render
+
+useEffect(() => {
+    alert("Welcome to my application")
+}) 
+
+Case 2: This is the case which is used mostly whenever we want to show a thing on 1st Render only
+
+useEffect(() => {
+    alert("Welcome to my application")
+}, [])
+
+Case 3: This is the case which is used mostly whenever we want to show a thing when any changes occurs to a specified element or state
+
+useEffect(() => {
+    passwordGenerator()
+}, [length, numberCheckbox, charCheckbox])
+
+React.StrictMode
+----------------
+<React.StrictMode></React.StrictMode> --> this will execute the code 2 times.
+1 for testing purpose
+2 for original execution
+
+useRef() hook
+--------------
+This is a React Hook that lets you reference a value that’s not needed for rendering. Means if we change the variable value of this hook it will not do the re rendering.
+
+But when we change the variable value of a useState() hook it will re render the page.
+
+we can also get the current value of the reference element by ref.current
+Though this can we get the dom element.
+
+React Router
+------------
+npm i react-router-dom  --> this is 3rd party pkg through which we can configure our Routing in React
+
+It is also having one feature called "loader()".
+
+Usecase of loader():
+When we put our cursor on "about" at that time it will start fetching data from that component and will store it in the cache memory.
+
+Redux or Redux Tool Kit (RTK)
+-----------------------------
+It is a state management tool which is responsible for passing of data among various components in a organized way.
+
+Context
+--------
+Context is basically an global object.
+After creating context we need to create the provider.
+Inside provider whatever the value we pass that can be accessible by it's all child components. 
+
+example:
+const UserContext = React.createContext();
+
+<UserContext>
+<Login/>
+    <Card>
+        <Data/>
+    </Card>
+</UserContext>
+
+here we wrap the components under UserContext means the component present under UserContext (Login, Card, Data) are now having access to UserContext properties.
+
