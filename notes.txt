@@ -107,6 +107,8 @@ It is a state management tool which is responsible for passing of data among var
 Context
 --------
 Context is basically an global object.
+Main objective is to avoid props drilling.
+It shares the data globally.
 After creating context we need to create the provider.
 Inside provider whatever the value we pass that can be accessible by it's all child components. 
 
@@ -122,3 +124,25 @@ const UserContext = React.createContext();
 
 here we wrap the components under UserContext means the component present under UserContext (Login, Card, Data) are now having access to UserContext properties.
 
+Local Storage
+-------------
+
+1.Go to "inspect"
+2.Go to "Application"
+3.Go to "local storage"
+
+--It is vital to remember that in order to store data in localStorage, you must first stringify it with the JSON.stringify() function.
+
+--It is important to remember that when we stored the data, we first converted it to a JSON string. This means that in order for us to now make use of it, we need to convert JSON string back to a JSON object. We do this with the JSON.parse() method when we use getItem().
+
+It has 2 things:
+---------------
+localStorage.getItem(key)
+localStorage.setItem(key, value)  
+localStorage.removeItem(key)
+localStorage.clear(): This technique is used to delete all instances of localStorage.
+
+Redux
+-----
+It is a popular state management library.
+If we want to use Redux in React we use "react-redux"
