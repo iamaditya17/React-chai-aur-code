@@ -145,7 +145,8 @@ localStorage.clear(): This technique is used to delete all instances of localSto
 Redux
 -----
 It is a popular state management library.
-If we want to use Redux in React we use "react-redux"
+If we want to use Redux in React we use "react-redux".
+In Redux State is Read-only.
 
 Why Redux came into market?
 ---------------------------
@@ -156,7 +157,7 @@ Data flow :- How the data is being updated and how to use those data.
 
 Why Redux-Toolkit?
 ------------------
-Redux has huge configuration setup. It doesn't have any built in middleware.
+Redux has huge configuration setup. It doesn't have any built in middleware. But Redux-Toolkit(RTK) has some inbuilt middleware.
 
 Components of Redux
 -------------------
@@ -168,6 +169,47 @@ useSelector : used to select the data in store
 
 useDispatch : used to send/dispatch data. It will change the data of the store by using reducers
 
-Every application has only one Store which is called single source of truth.
-Features are called as "Slice".
-State : updated the state value in the store
+NOTE:
+-----
+
+-> Every application has only one Store which is called single source of truth.
+-> Features are called as "Slice".
+
+-> State : updated state value present in the store
+-> Action : through action we can get the data (action.payload). Here payload contains the data.
+
+-> We can update the store using dispatcher through reducers.
+
+-> Context has Provider with value={}  But  RTK has Provider with store={}
+
+-> onClick = {addTodo} . It always expect a function reference here we can't call a function or pass any arguments.
+   But if we want to make a function call then through callback we can did it like e.g onClick = {() => addTodo(id)}.
+
+-> In Context we configure the initial state where we only declare the functions.
+
+const ThemeContext = React.createContext({
+  themeMode: "light",
+  darkTheme: () => {},
+  lightTheme: () => {},
+});
+
+   But in Redux we will also define/implement the function
+
+export const todoSlice = createSlice({
+  name: "todo",
+  initialState,
+  reducers: {
+    addTodo: (state, action) => {
+      // state will give us the current state it holds and we can get the data from action
+      const todo = {
+        id: nanoid(),
+        msg: action.payload,
+      };
+
+      state.todos.push(todo);
+    },
+    removeTodo: (state, action) => {
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+    },
+  },
+});
